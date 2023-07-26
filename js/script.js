@@ -61,12 +61,13 @@ function acierto(tarjetasAComparar) {
 
 function error(tarjetasAComparar) {
     tarjetasAComparar.forEach(function (elemento) {
-        elemento.classList.remove("descubierta");
+        elemento.classList.add("error");
     })
+
+    setTimeout(function () {
+        tarjetasAComparar.forEach(function (elemento) {
+            elemento.classList.remove("descubierta");
+            elemento.classList.remove("error");
+        })
+    }, 1000);
 }
-
-repartirTarjetas();
-
-document.querySelectorAll(".tarjeta").forEach(function (elemento) {
-    elemento.addEventListener("click", descubrir);
-})
