@@ -6,12 +6,51 @@
     <title>Juego de memoria</title>
 
     <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/site.css" />
   </head>
   <body>
+    <header class="header">
+      <div class="contadores">
+        <div class="contador-item">
+          <h4 class="titulo">Movimientos</h4>
+          <div class="numero">
+            <span id="mov">00</span>/<span id="movTotal">20</span>
+          </div>
+        </div>
+        <div class="contador-item">
+          <h4 class="titulo">Tiempo</h4>
+          <div class="numero">
+            <span id="minutos">00</span>:<span id="segundos">00</span>
+          </div>
+        </div>
+      </div>
+      <div class="nivel">
+        <h4 class="titulo">Nivel</h4>
+        <div class="numero"><span id="nivel">01</span></div>
+      </div>
+      <button id="control-nivel" class="control-nivel">…</button>
+    </header>
     <main>
-      <div class="mesa" id="mesa">
-        <div class="tarjeta">
-          <div class="tarjetaContenido"></div>
+      <div class="mesa" id="mesa"></div>
+      <div class="subeNivel" id="subeNivel">
+        <div class="modal">
+          <h2>Muy bien!!</h2>
+          <button id="subir">Siguiente nivel</button>
+          <button class="reiniciar reiniciar1">Reiniciar</button>
+        </div>
+      </div>
+      <div id="gameOver" class="gameOver">
+        <div class="modal">
+          <h2>Oh no!</h2>
+          <p>Te has quedado sin movimientos :(</p>
+          <button class="reiniciar reiniciar1">Reiniciar</button>
+        </div>
+      </div>
+      <div id="feedback" class="feedback">
+        <div class="modal">
+          <h2>Buen trabajo!!</h2>
+          <p>Has superado todos los niveles :D</p>
+          <button id="reiniciar" class="reiniciar">¿Reiniciar?</button>
         </div>
       </div>
     </main>

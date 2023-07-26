@@ -1,0 +1,16 @@
+:root {
+    --bg: #fafafa;
+    --hotpink: #e94057;
+    --orange: #f27121;
+    --gradient: linear-gradient(35deg, var(--orange), var(--hotpink));
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: auto;
+    min-height: 100vh;
+    background: var(--bg);
+}
