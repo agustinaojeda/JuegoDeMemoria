@@ -53,6 +53,8 @@ function descubrir() {
 
     this.classList.add("descubierta");
 
+    document.querySelector("#sonCarta").cloneNode().play();
+
     descubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
     if (descubiertas.length > 2) {
         return;
@@ -83,12 +85,15 @@ function acierto(tarjetasAComparar) {
     tarjetasAComparar.forEach(function (elemento) {
         elemento.classList.add("acertada");
     })
+    document.querySelector("#sonAcierto").play();
 }
 
 function error(tarjetasAComparar) {
     tarjetasAComparar.forEach(function (elemento) {
         elemento.classList.add("error");
     })
+
+    document.querySelector("#sonError").play();
 
     setTimeout(function () {
         tarjetasAComparar.forEach(function (elemento) {
