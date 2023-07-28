@@ -1,18 +1,22 @@
-let grupoTarjetas = [['🐰', '🦊'], ['🐻', '🐼'], ['🐭', '🐶']];
+let grupoTarjetas = [['🐰', '🦊'], ['🐻', '🐼'], ['🐭', '🐶', '🐸', '🐷']];
 let movimientos = 0;
+let modoRelax = false;
 let nivelActual = 0;
 let niveles = [
     {
         tarjetas: grupoTarjetas[0],
-        movimientosMax: 3
+        movimientosMax: 4,
+        tiempoMax: 10
     },
     {
         tarjetas: grupoTarjetas[0].concat(grupoTarjetas[1]),
-        movimientosMax: 8
+        movimientosMax: 12,
+        tiempoMax: 15
     },
     {
         tarjetas: grupoTarjetas[0].concat(grupoTarjetas[1], grupoTarjetas[2]),
-        movimientosMax: 12
+        movimientosMax: 20,
+        tiempoMax: 40
     }
 ];
 
@@ -105,7 +109,7 @@ function error(tarjetasAComparar) {
 
 let cronometro;
 function iniciarCronometro() {
-    let segundos = 10;
+    let segundos = niveles[nivelActual].tiempoMax;
     let minutos = 0;
     let segTexto;
     let minTexto;
@@ -121,6 +125,7 @@ function iniciarCronometro() {
             segundos = 0;
             minutos = 0;
             clearInterval(cronometro);
+            timeOver();
         }
 
         segTexto = segundos;
@@ -146,7 +151,7 @@ function actualizarMovimientos() {
     movimientos++;
     movTexto = movimientos;
 
-    if (movimientos > niveles[nivelActual].movimientosMax) {
+    if (movimientos > niveles[nivelActual].movimientosMax && !modoRelax) {
         gameOver();
         return;
     }
@@ -197,5 +202,59 @@ function cargarNivel() {
 }
 
 function gameOver() {
+    clearInterval(cronometro);
     document.querySelector("#gameOver").classList.add("visible");
+}
+
+function timeOver() {
+    document.querySelector("#timeOver").classList.add("visible");
+}
+
+let verNivel = false;
+function escribirNiveles() {
+    let menuNiveles = document.querySelector(".seleccionaNivel ul");
+
+    niveles.forEach(function (elemento, indice) {
+        let controlNivel = document.createElement("li");
+        controlNivel.innerHTML = "<button class='nivel' data-nivel=" +
+            indice + ">Nivel " + (indice + 1) + "</button>";
+        menuNiveles.appendChild(controlNivel);
+    })
+}
+
+function cambiarNivel() {
+    let nivel = parseInt(this.dataset.nivel);
+    nivelActual = nivel;
+    actualizarNivel();
+    iniciar();
+    let verNivel = false;
+}
+
+
+function mostrarMenuNiveles(evento) {
+    evento.stopPropagation();
+    document.querySelector(".seleccionaNivel").classList.toggle("visible");
+    verNivel = true;
+}
+
+function ocultarMenuNiveles() {
+    document.querySelector(".seleccionaNivel").remove("visible");
+    verNivel = false;
+}
+
+function clickFueraDeMenu(evento) {
+    if (evento.target.closest(".seleccionaNivel")) {
+        return;
+    }
+    if (verNivel) {
+        document.querySelector(".seleccionaNivel").classList.remove("visible");
+        verNivel = false;
+    }
+
+}
+
+function teclaEscCierraMenu(evento) {
+    if (evento.key === "Escape") {
+        ocultarMenuNiveles();
+    }
 }

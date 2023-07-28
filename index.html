@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="css/site.css" />
   </head>
   <body>
+    <div class="bienvenida" id="bienvenida">
+      <h1>Hola!</h1>
+      <div class="bienvenida-botones">
+        <button id="juegoNormal">Quiero jugar!</button>
+        <button id="juegoRelax">Modo relax</button>
+      </div>
+    </div>
     <header class="header">
       <div class="contadores">
         <div class="contador-item">
@@ -17,7 +24,7 @@
             <span id="mov">00</span>/<span id="movTotal">20</span>
           </div>
         </div>
-        <div class="contador-item">
+        <div class="contador-item" id="cronometro">
           <h4 class="titulo">Tiempo</h4>
           <div class="numero">
             <span id="minutos">00</span>:<span id="segundos">00</span>
@@ -28,7 +35,7 @@
         <h4 class="titulo">Nivel</h4>
         <div class="numero"><span id="nivel">01</span></div>
       </div>
-      <button id="control-nivel" class="control-nivel">…</button>
+      <button id="controlNivel" class="controlNivel">…</button>
     </header>
     <main>
       <div class="mesa" id="mesa"></div>
@@ -46,6 +53,13 @@
           <button class="reiniciar reiniciar1">Reiniciar</button>
         </div>
       </div>
+      <div id="timeOver" class="gameOver">
+        <div class="modal">
+          <h2>Oh no!</h2>
+          <p>Te has quedado sin tiempo :(</p>
+          <button class="reiniciar reiniciar1">Reiniciar</button>
+        </div>
+      </div>
       <div id="feedback" class="feedback">
         <div class="modal">
           <h2>Buen trabajo!!</h2>
@@ -54,6 +68,11 @@
         </div>
       </div>
     </main>
+
+    <div class="seleccionaNivel">
+      <button id="cierraNiveles" class="cierraNiveles">&times;</button>
+      <ul></ul>
+    </div>
 
     <audio
       src="sonidos/acierto.mp3"
@@ -76,5 +95,6 @@
 
     <script src="js/script.js"></script>
     <script src="js/iniciar.js"></script>
+    <script src="js/comienza-juego.js"></script>
   </body>
 </html>

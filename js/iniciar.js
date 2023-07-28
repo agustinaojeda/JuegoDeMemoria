@@ -7,14 +7,22 @@ function iniciar() {
     document.querySelector(".header").classList.remove("novisible");
     document.querySelector("#feedback").classList.remove("visible");
     document.querySelector("#gameOver").classList.remove("visible");
+    document.querySelector("#timeOver").classList.remove("visible");
     document.querySelector("#subeNivel").classList.remove("visible");
     document.querySelector(".mesa").classList.remove("novisible");
+
 
     document.querySelectorAll(".tarjeta").forEach(function (elemento) {
         elemento.addEventListener("click", descubrir);
     })
 
-    iniciarCronometro();
+    if (!modoRelax) {
+        iniciarCronometro();
+    } else {
+        document.querySelector("#cronometro").classList.add("cronometroOculto");
+    }
+
+
 }
 
 function reiniciar() {
@@ -23,12 +31,16 @@ function reiniciar() {
     iniciar();
 }
 
-iniciar();
+function iniciarJuegoNormal() {
+    modoRelax = false;
+    document.querySelector("#bienvenida").classList.remove("visible");
+    iniciar();
+    document.querySelector(".controlNivel").classList.add("controlOculto");
+}
 
-document.querySelector("#reiniciar").addEventListener("click", reiniciar);
-
-document.querySelectorAll(".reiniciar1").forEach(function (elemento) {
-    elemento.addEventListener("click", iniciar);
-})
-
-document.querySelector("#subir").addEventListener("click", cargarNivel);
+function iniciarJuegoRelax() {
+    modoRelax = true;
+    document.querySelector("#bienvenida").classList.remove("visible");
+    document.querySelector("#cronometro").classList.add("cronometroOculto");
+    iniciar();
+}

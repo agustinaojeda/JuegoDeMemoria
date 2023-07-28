@@ -267,11 +267,11 @@ button:focus {
   display: none;
 }
 
-.cronometro-oculto {
+.cronometroOculto {
   display: none;
 }
 
-.control-nivel {
+.controlNivel {
   position: absolute;
   font-size: .8rem;
   top: 2.9rem;
@@ -285,11 +285,11 @@ button:focus {
   background: var(--hotpink);
 }
 
-.control-oculto {
+.controlOculto {
   display: none;
 }
 
-.selecciona-nivel {
+.seleccionaNivel {
   background-color: var(--hotpink);
   position: fixed;
   width: 250px;
@@ -301,26 +301,26 @@ button:focus {
   padding: 1rem 2rem;
 }
 
-.selecciona-nivel.visible {
+.seleccionaNivel.visible {
   transform: translateX(0);
 }
 
-.selecciona-nivel button {
+.seleccionaNivel button {
   background: transparent;
   padding: 0;
 }
 
-.selecciona-nivel ul {
+.seleccionaNivel ul {
   list-style: none;
   padding-left: 0;
 }
 
-.selecciona-nivel li {
+.seleccionaNivel li {
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.cierra-niveles {
+.cierraNiveles {
   position: absolute;
   top: 0.5rem;
   right: 1rem;
