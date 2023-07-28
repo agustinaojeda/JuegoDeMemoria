@@ -6,17 +6,17 @@ let niveles = [
     {
         tarjetas: grupoTarjetas[0],
         movimientosMax: 4,
-        tiempoMax: 10
+        tiempoMax: 11
     },
     {
         tarjetas: grupoTarjetas[0].concat(grupoTarjetas[1]),
         movimientosMax: 12,
-        tiempoMax: 15
+        tiempoMax: 31
     },
     {
         tarjetas: grupoTarjetas[0].concat(grupoTarjetas[1], grupoTarjetas[2]),
         movimientosMax: 20,
-        tiempoMax: 40
+        tiempoMax: 61
     }
 ];
 
@@ -109,10 +109,18 @@ function error(tarjetasAComparar) {
 
 let cronometro;
 function iniciarCronometro() {
-    let segundos = niveles[nivelActual].tiempoMax;
-    let minutos = 0;
+    let segundos;
+    let minutos;
     let segTexto;
     let minTexto;
+
+    if (niveles[nivelActual].tiempoMax < 60) {
+        minutos = 0;
+        segundos = niveles[nivelActual].tiempoMax;
+    } else {
+        minutos = parseInt(niveles[nivelActual].tiempoMax / 60);
+        segundos = niveles[nivelActual].tiempoMax % 60;
+    }
 
     function actualizarContador() {
 
